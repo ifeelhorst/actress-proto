@@ -49,7 +49,8 @@ def db_changes():
 
 ### ------------------ ???
 def check_duplicates_and_save():
-
+    actressListDB = []
+    db_auslesen()
     for i in actressListDB:
         for y in actressList:
             if i[0]==y[0]:
@@ -61,7 +62,6 @@ def check_duplicates_and_save():
                 """, actressList)
     database.commit()
     gui.update()
-    db_auslesen()
     db_changes()
 
 ### ------------------ Datei-Handling
@@ -79,9 +79,6 @@ def datei_auslesen(datei=__DATEI):
             del item[0]
 
         check_duplicates_and_save()
-
-
-
 
 
 ### ------------------ Test-Methoden
@@ -113,7 +110,7 @@ def testdaten_schreiben():
 def main():
     # db_table_create()
     # testdaten_schreiben()
-    db_auslesen()
+    # db_auslesen()
     tk.Label(gui, text="", height="1").pack()
     tk.Button(gui, text="Browse", command=button_open_file).pack()
     tk.Button(gui, text="Schließen", command=button_close).pack()

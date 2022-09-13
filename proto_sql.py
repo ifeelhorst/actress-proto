@@ -5,7 +5,7 @@ from tkinter import filedialog
 
 # GUI Prototyping
 gui = tk.Tk()
-gui.geometry("400x600")
+gui.geometry("450x600")
 gui.title("Schauspielerinnen")
 
 # Datenbank
@@ -40,8 +40,24 @@ def db_table_create():
 def db_auslesen():
     for row in cursor.execute('SELECT * FROM actress ORDER BY vorname ASC'):
         actressListDB.append(row)
-        label = tk.Label(gui, text=row[0]+" "+row[1] ) # bg="lightblue"
-        label.pack()
+
+def show_actress():
+    i = 1
+    for row in actressListDB:
+
+        label0 = tk.Label(gui, text=row[0] ) # bg="lightblue"
+        label1 = tk.Label(gui, text=row[1] )
+        label2 = tk.Label(gui, text=row[2] )
+        inputField = tk.Entry(gui, textvariable="")
+
+        label0.grid(row = i, column = 0)
+        label1.grid(row = i, column = 1)
+        label2.grid(row = i, column = 2)
+        inputField.grid(row = i, column = 3)
+
+        i += 1
+        # label = tk.Label(gui, text=row[0]+" "+row[1] ) # bg="lightblue"
+        # label.pack()
 
 def db_changes():
     """Schreibt, wieviele Daten-Änderungen es in der Tabelle gab"""
@@ -49,8 +65,6 @@ def db_changes():
 
 ### ------------------ ???
 def check_duplicates_and_save():
-    actressListDB = []
-    db_auslesen()
     for i in actressListDB:
         for y in actressList:
             if i[0]==y[0]:
@@ -74,11 +88,12 @@ def datei_auslesen(datei=__DATEI):
             if i > 0:
                  actressList.append(row)
             i = i+1
-        # herausfiltern unnützer items aus Datei-Import
+        # herausfiltern unnützer items (Spalten) aus Datei-Import
         for item in actressList:
             del item[0]
 
         check_duplicates_and_save()
+
 
 
 ### ------------------ Test-Methoden
@@ -108,12 +123,16 @@ def testdaten_schreiben():
 
 ### ------------------ MAINLOOP
 def main():
-    # db_table_create()
+    db_table_create()
     # testdaten_schreiben()
-    # db_auslesen()
-    tk.Label(gui, text="", height="1").pack()
-    tk.Button(gui, text="Browse", command=button_open_file).pack()
-    tk.Button(gui, text="Schließen", command=button_close).pack()
+    db_auslesen()
+    show_actress()
+    btn1 = tk.Button(gui, text="Browse", command=button_open_file)
+    btn3 = tk.Button(gui, text="Save", command=button_open_file)
+    btn2 = tk.Button(gui, text="Schließen", command=button_close)
+    btn1.grid(row = 0, column=0)
+    btn3.grid(row = 0, column=1)
+    btn2.grid(row = 0, column=2, columnspan=2, sticky='e', pady=10, padx=10)
 
 if __name__ == "__main__":
     main()

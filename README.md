@@ -15,6 +15,7 @@ Prototyp für meine eigentliche Idee einen Daily Budget Klon in Pyhton zu bauen.
 ### MVPs to be done
 - gui Ausgabe in Table formatieren
 - input-felder für Ranking
+- generische tabelle erstellen?!
 
 ### MVPs done
 - Excel-Datei umsatz.csv einlesen
@@ -26,7 +27,7 @@ Prototyp für meine eigentliche Idee einen Daily Budget Klon in Pyhton zu bauen.
 - Auswahl-Dialog Import-Datei
 - importierte Datei in Liste umwandeln
 - Liste in sqlite-table abspeichern
-- redundanzfreie Ablage 
+- redundanzfreie Ablage
 
 ## dev-backlog (technische Sünden)
 - clean and pretty code, OOP

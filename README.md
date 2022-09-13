@@ -28,6 +28,7 @@ Prototyp für meine eigentliche Idee einen Daily Budget Klon in Pyhton zu bauen.
 - importierte Datei in Liste umwandeln
 - Liste in sqlite-table abspeichern
 - redundanzfreie Ablage
+- Anzeige Input-Feld
 
 ## dev-backlog (technische Sünden)
 - clean and pretty code, OOP

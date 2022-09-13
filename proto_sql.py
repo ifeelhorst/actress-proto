@@ -34,7 +34,7 @@ def button_close():
 ### ------------------ Datenbank-Handling
 def db_table_create():
     """legt die Tabelle an; achtet darauf, dass diese nur einmal vorkommt. Kann also immer aufgerufen werden """
-    cursor.execute("CREATE TABLE IF NOT EXISTS actress (vorname varchar, nachname varchar, gebdatum date)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS actress (vorname varchar, nachname varchar, gebdatum date, heart INTEGER)")
 
 
 def db_auslesen():

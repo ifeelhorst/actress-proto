@@ -7,14 +7,14 @@ Prototyp für meine eigentliche Idee einen Daily Budget Klon in Pyhton zu bauen.
 - Doppler werden erkannt und herausgefiltert
 
 ## nächstes große Ding
-- schicke Anzeige
+- schickere Anzeige
 - Herzchen für Schauspielerinnen als Favorit vergebar
 
 # Developer-stuff
 ## Prototyping
 ### MVPs to be done
-- gui Ausgabe in Table formatieren
-- input-felder für Ranking
+- primary key sqlite aufnehmen
+- logik zum Speichern von heart-ranking (0 und 1) 
 - generische tabelle erstellen?!
 
 ### MVPs done
@@ -29,6 +29,9 @@ Prototyp für meine eigentliche Idee einen Daily Budget Klon in Pyhton zu bauen.
 - Liste in sqlite-table abspeichern
 - redundanzfreie Ablage
 - Anzeige Input-Feld
+- gui Ausgabe in Table formatieren
+- input-felder für Ranking
+
 
 ## dev-backlog (technische Sünden)
 - clean and pretty code, OOP

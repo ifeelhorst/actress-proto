@@ -38,7 +38,7 @@ def db_table_create():
 
 
 def db_auslesen():
-    for row in cursor.execute('SELECT * FROM actress ORDER BY vorname ASC'):
+    for row in cursor.execute('SELECT *, ROWID FROM actress ORDER BY vorname ASC'):
         actressListDB.append(row)
 
 def show_actress():
@@ -58,6 +58,7 @@ def show_actress():
         i += 1
         # label = tk.Label(gui, text=row[0]+" "+row[1] ) # bg="lightblue"
         # label.pack()
+    print(actressListDB)
 
 def db_changes():
     """Schreibt, wieviele Daten-Änderungen es in der Tabelle gab"""

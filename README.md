@@ -13,8 +13,7 @@ Prototyp für meine eigentliche Idee einen Daily Budget Klon in Pyhton zu bauen.
 # Developer-stuff
 ## Prototyping
 ### MVPs to be done
-- primary key sqlite aufnehmen
-- logik zum Speichern von heart-ranking (0 und 1) 
+- logik zum Speichern von heart-ranking (0 und 1)
 - generische tabelle erstellen?!
 
 ### MVPs done
@@ -31,6 +30,7 @@ Prototyp für meine eigentliche Idee einen Daily Budget Klon in Pyhton zu bauen.
 - Anzeige Input-Feld
 - gui Ausgabe in Table formatieren
 - input-felder für Ranking
+- primary key sqlite aufnehmen --> SELECT ROWID, * FROM...
 
 
 ## dev-backlog (technische Sünden)

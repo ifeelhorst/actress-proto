@@ -15,6 +15,7 @@ cursor = database.cursor()
 
 actressList = []
 actressListDB = []
+hearts = []
 
 ### ------------------ Buttons
 def button_open_file():
@@ -31,6 +32,10 @@ def button_close():
     # hier vielleicht später speichern ;-)
     gui.destroy()
 
+
+def button_save():
+    pass
+
 ### ------------------ Datenbank-Handling
 def db_table_create():
     """legt die Tabelle an; achtet darauf, dass diese nur einmal vorkommt. Kann also immer aufgerufen werden """
@@ -38,27 +43,31 @@ def db_table_create():
 
 
 def db_auslesen():
+
     for row in cursor.execute('SELECT *, ROWID FROM actress ORDER BY vorname ASC'):
         actressListDB.append(row)
+        hearts.append((row[4], row[3]))
+    print(hearts)
 
 def show_actress():
-    i = 1
-    for row in actressListDB:
+    for count, row in enumerate(actressListDB, start = 1):
+        heart = tk.StringVar()
+        heart.set(row[3])
 
         label0 = tk.Label(gui, text=row[0] ) # bg="lightblue"
         label1 = tk.Label(gui, text=row[1] )
         label2 = tk.Label(gui, text=row[2] )
-        inputField = tk.Entry(gui, textvariable="")
+        inputField = tk.Entry(gui, textvariable=heart)
+        label3 = tk.Label(gui, text=row[4] )
 
-        label0.grid(row = i, column = 0)
-        label1.grid(row = i, column = 1)
-        label2.grid(row = i, column = 2)
-        inputField.grid(row = i, column = 3)
+        label0.grid(row = count, column = 0)
+        label1.grid(row = count, column = 1)
+        label2.grid(row = count, column = 2)
+        inputField.grid(row = count, column = 3)
+        label3.grid(row = count, column = 4)
 
-        i += 1
         # label = tk.Label(gui, text=row[0]+" "+row[1] ) # bg="lightblue"
         # label.pack()
-    print(actressListDB)
 
 def db_changes():
     """Schreibt, wieviele Daten-Änderungen es in der Tabelle gab"""
@@ -73,11 +82,11 @@ def check_duplicates_and_save():
     #print(actressList)
     cursor.executemany("""
                 INSERT INTO actress
-                        VALUES (?,?,?)
+                        VALUES (?,?,?, 0)
                 """, actressList)
     database.commit()
     gui.update()
-    db_changes()
+    # db_changes()
 
 ### ------------------ Datei-Handling
 def datei_auslesen(datei=__DATEI):
@@ -127,9 +136,10 @@ def main():
     db_table_create()
     # testdaten_schreiben()
     db_auslesen()
+
     show_actress()
     btn1 = tk.Button(gui, text="Browse", command=button_open_file)
-    btn3 = tk.Button(gui, text="Save", command=button_open_file)
+    btn3 = tk.Button(gui, text="Save", command=button_save)
     btn2 = tk.Button(gui, text="Schließen", command=button_close)
     btn1.grid(row = 0, column=0)
     btn3.grid(row = 0, column=1)

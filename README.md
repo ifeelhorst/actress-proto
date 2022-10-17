@@ -4,6 +4,7 @@ Prototyp für meine eigentliche Idee einen Daily Budget Klon in Pyhton zu bauen.
 ## Bereits unterstützte Features
 - es gibt eine gui ;-)
 - simple csv-Datei aus Dateisytem auswählbar und Einträge werden in einer Datenbank abspeichert
+- Ausgabe aller eingelesen Daten
 - Doppler werden erkannt und herausgefiltert
 
 ## nächstes große Ding
@@ -31,6 +32,7 @@ Prototyp für meine eigentliche Idee einen Daily Budget Klon in Pyhton zu bauen.
 - gui Ausgabe in Table formatieren
 - input-felder für Ranking
 - primary key sqlite aufnehmen --> SELECT ROWID, * FROM...
+- enumerate() bei db_auslesen() eingebaut
 
 
 ## dev-backlog (technische Sünden)
@@ -38,3 +40,7 @@ Prototyp für meine eigentliche Idee einen Daily Budget Klon in Pyhton zu bauen.
 - screen refreshen, wenn Änderungen
 - Alter ausrechnen
 - dynamische Fenstergröße
+- Logging-Feld: 0 nur import, nicht verändert / 1 bestätigte Kategorie / 2 automatische vergeben, noch nicht bestätigt
+- Limit beim db_auslesen() einbauen für Paging
+- Menü für auslesen, auswertung, ....
+- Filter bei db_auslesen() für Dinge, die noch kein Logging Feld haben (s. oben)

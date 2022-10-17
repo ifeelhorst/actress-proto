@@ -34,7 +34,8 @@ def button_close():
 
 
 def button_save():
-    pass
+    print (hearts);
+    # pass
 
 ### ------------------ Datenbank-Handling
 def db_table_create():
@@ -46,18 +47,18 @@ def db_auslesen():
 
     for row in cursor.execute('SELECT *, ROWID FROM actress ORDER BY vorname ASC'):
         actressListDB.append(row)
-        hearts.append((row[4], row[3]))
+        hearts.append([row[4], row[3]])
     print(hearts)
 
 def show_actress():
     for count, row in enumerate(actressListDB, start = 1):
-        heart = tk.StringVar()
+        heart = tk.IntVar()
         heart.set(row[3])
 
         label0 = tk.Label(gui, text=row[0] ) # bg="lightblue"
         label1 = tk.Label(gui, text=row[1] )
         label2 = tk.Label(gui, text=row[2] )
-        inputField = tk.Entry(gui, textvariable=heart)
+        inputField = tk.Entry(gui, textvariable=heart.get())
         label3 = tk.Label(gui, text=row[4] )
 
         label0.grid(row = count, column = 0)
@@ -66,8 +67,9 @@ def show_actress():
         inputField.grid(row = count, column = 3)
         label3.grid(row = count, column = 4)
 
-        # label = tk.Label(gui, text=row[0]+" "+row[1] ) # bg="lightblue"
-        # label.pack()
+        print(inputField.get())
+        #print(heart.get())
+        hearts[count-1][1] = heart.get()
 
 def db_changes():
     """Schreibt, wieviele Daten-Änderungen es in der Tabelle gab"""
